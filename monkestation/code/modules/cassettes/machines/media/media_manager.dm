@@ -177,8 +177,10 @@
 		return
 	var/obj/machinery/media/M = A.media_source
 	if(M && M.playing)
+		var/turf/location = get_turf(M)
+
 		var/dist = get_dist(owner.mob, M)
-		var/x_dist = (owner.mob.x - M.x) * 10
+		var/x_dist = (owner.mob.x - location.x)
 
 		targetURL = M.media_url
 		targetStartTime = M.media_start_time
@@ -213,10 +215,12 @@
 
 	var/obj/machinery/media/M = A.media_source
 	if(M && M.playing)
-		var/dist = get_dist(new_loc, M)
-		var/x_dist = -(new_loc.x - M.x) * 10
+		var/turf/location = get_turf(M)
 
-		targetVolume = max(0, M.volume * (1 - (dist * 0.1)))
+		var/dist = get_dist(new_loc, get_turf(M))
+		var/x_dist = (new_loc.x - location.x) * 10
+
+		targetVolume = max(0, M.volume * (1 - (dist * 0.1))) 
 		targetBalance = x_dist
 	push_volume_recalc(targetVolume, targetBalance)
 

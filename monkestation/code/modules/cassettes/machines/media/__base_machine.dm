@@ -25,7 +25,7 @@
 
 /obj/machinery/media/proc/update_media_source()
 	// Check if there's a media source already.
-	for(var/area/area in get_areas_in_range(15, src))
+	for(var/area/area in get_areas_in_range(15, get_turf(src)))
 		if(area.media_source && area.media_source != src) // If it does, the new media source replaces it. basically, the last media source arrived gets played on top.
 			area.media_source.disconnect_media_source() // You can turn a media source off and on for it to come back on top.
 			area.media_source = src
@@ -34,27 +34,47 @@
 			area.media_source = src
 
 /obj/machinery/media/proc/disconnect_media_source()
-	for(var/area/area in get_areas_in_range(15, src))
+	for(var/area/area in get_areas_in_range(15, get_turf(src)))
 		// Update Media Source.
 		area.media_source = null
 
 	// Clients
-	for(var/mob/mob as anything in range(15))
+	for(var/mob/mob as anything in range(15, get_turf(src)))
 		if(!istype(mob)) //might be possible to simply make this not be as() anything
 			continue
 		mob.update_music()
 
+/obj/machinery/media/proc/disconnect_media_source_area()
+	for(var/area/area in get_areas_in_range(15, get_turf(src)))
+		// Update Media Source.
+		area.media_source = null
+
+/obj/machinery/media/proc/update_volume()
+	for(var/area/area in get_areas_in_range(15, get_turf(src)))
+		if(area.media_source && area.media_source == src)
+			area.media_source.disconnect_media_source()
+			area.media_source = src
+			return
+		else
+			area.media_source = src
+
+	// Clients
+	for(var/mob/mob as anything in range(15, get_turf(src)))
+		if(!istype(mob))
+			continue
+		mob.recalc_volume()
+
 /obj/machinery/media/Move()
-	disconnect_media_source()
+	disconnect_media_source_area()
 	. = ..()
 	if(anchored)
-		update_music()
+		update_volume()
 
 /obj/machinery/media/forceMove(var/atom/destination)
-	disconnect_media_source()
+	disconnect_media_source_area()
 	. = ..()
 	if(anchored)
-		update_music()
+		update_volume()
 
 /obj/machinery/media/Initialize()
 	. = ..()
@@ -62,4 +82,4 @@
 
 /obj/machinery/media/Destroy()
 	disconnect_media_source()
-	. = ..()
+	return ..()

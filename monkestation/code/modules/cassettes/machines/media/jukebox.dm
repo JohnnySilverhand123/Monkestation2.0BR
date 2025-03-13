@@ -85,6 +85,7 @@
 		media_url = ""
 		media_start_time = 0
 	update_music()
+	SEND_SIGNAL(src, COMSIG_JUKEBOX_UPDATE, playing)
 
 /obj/machinery/media/jukebox/proc/set_hacked(var/newhacked)
 	if(hacked == newhacked)
