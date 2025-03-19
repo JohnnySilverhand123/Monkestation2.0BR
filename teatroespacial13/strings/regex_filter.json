@@ -1,0 +1,27 @@
+{
+    "in_character": {
+        "\bfdp\b": "filho da puta",
+        "\bpnc\b": "pau no cu",
+        "\bpqp\b": "puta que pariu",
+        "\bpq\b": "porque",
+        "\bvc\b": "você",
+        "\bflw\b": "falou",
+        "\bvlw\b": "valeu",
+        "\bvsf\b": "vai se foder",
+        "\btnc\b": "tomar no cu",
+        "\bsfd\b": "se fuder",
+        "\bent\b": "então",
+        "\bwtf\b": "mas que porra",
+        "\bmds\b": "meu Deus",
+        "\bdnd\b": "de nada",
+        "\bmt\b": "muito",
+        "\bfl\b": "fala",
+        "\btmb\b": "também",
+        "\bobg\b": "obrigado",
+        "\btmj\b": "tamo junto",
+        "\bblz\b": "beleza",
+        "\blol\b": "éle ó éle",
+        "\blmao\b": "limão",
+        "\brofl\b": "érri ó éfi éle"
+    }
+}

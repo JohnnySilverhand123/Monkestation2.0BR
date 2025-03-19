@@ -8781,6 +8781,8 @@
 #include "monkestation\code\random_rooms\engines\tramstation.dm"
 #include "monkestation\gunning_ing\recoil.dm"
 #include "teatroespacial13\damage_tracker.dm"
+#include "teatroespacial13\code\__DEFINES\text.dm"
+#include "teatroespacial13\code\__HELPERS\_string_lists.dm"
 #include "teatroespacial13\code\datums\announcers\orchestrator.dm"
 #include "teatroespacial13\code\datums\station_traits\neutral_traits.dm"
 #include "teatroespacial13\eventos\gantz\code\gantz.dm"
@@ -8798,4 +8800,5 @@
 #include "teatroespacial13\modules\MiningBallistics\guns.dm"
 #include "teatroespacial13\modules\MiningBallistics\projectile.dm"
 #include "teatroespacial13\modules\SAD\self_actualization_device.dm"
+#include "teatroespacial13\modules\mob\living\living_say.dm"
 // END_INCLUDE
